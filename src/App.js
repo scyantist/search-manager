@@ -39,6 +39,10 @@ class SearchBar extends Component {
   }
 
   handleSubmit(event) {
+    // var newUrl = this.constructUrl(this.state.searchValue);
+    // chrome.tabs.query({'active': true}, function(tabs) {
+    //   chrome.tabs.update(tabs[0].id, {url: newUrl});
+    // });
     window.open(this.constructUrl(this.state.searchValue), '_blank');
   }
 

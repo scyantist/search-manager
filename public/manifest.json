@@ -9,6 +9,14 @@
     "scripts": ["background.js"],
     "persistent": false
   },
-  "permissions": ["storage"],
+  "commands": {
+    "open-search-manager": {
+      "suggested_key": {
+        "default": "Ctrl+T"
+      },
+      "description": "Show the SearchManager"
+    }
+  },
+  "permissions": ["tabs","storage"],
   "version": "1.0"
 }
