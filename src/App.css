@@ -7,11 +7,22 @@
   height: 80px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.ContentBlock {
+  background-color: white;
+  height: 600px;
+  width: 100%;
   padding: 20px;
   color: white;
+  /*To center align search bar and buttons*/
+  text-align: center;
+  /*To vertical align search bar and buttons*/
+  display: table;
+}
+
+.ContentMiddle {
+  /*To vertical align search bar and buttons*/
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .App-title {

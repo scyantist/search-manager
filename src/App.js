@@ -1,24 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import SearchIcon from '@material-ui/icons/Search';
+import IconButton from '@material-ui/core/IconButton';
+import MenuAppBar from './MenuAppBar';
 import './App.css';
+
+class LinksButton extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <Button variant="raised" color="primary" href={this.props.url}>
+        {this.props.name}
+      </Button>
+    );
+  }
+}
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <SearchBar />
-        <LinksButton name="Facebook" />
-        <LinksButton name="Amazon" />
-        <LinksButton name="Apple" />
-        <LinksButton name="Netflix" />
-        <LinksButton name="Google" />
+        <MenuAppBar />
+        <div className="ContentBlock">
+          <div className="ContentMiddle">
+            <SearchBar />
+            <LinksButton name="Facebook" url="www.facebook.com"/>
+            <LinksButton name="Amazon" url="www.amazon.com"/>
+            <LinksButton name="Apple" url="www.apple.com"/>
+            <LinksButton name="Netflix" url="www.netflix.com"/>
+            <LinksButton name="Google" url="www.google.com"/>
+          </div>
+        </div>
       </div>
     );
   }
@@ -38,15 +54,13 @@ class SearchBar extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" value={this.props.value} />
-        <input type="submit" />
+        <Input placeholder="Search the web" />
+        <IconButton color="primary">
+          <SearchIcon />
+        </IconButton>
       </form>
     );
   }
-}
-
-function LinksButton(props) {
-  return <button>Hello, {props.name}</button>;
 }
 
 export default App;
