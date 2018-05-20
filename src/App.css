@@ -3,36 +3,37 @@
 }
 
 .ContentBlock {
-  height: 600px;
+  height: calc(100% - 0px);
+  position: absolute;
   width: 100%;
   color: white;
-  /*To center align search bar and buttons*/
-  text-align: center;
-  /*To vertical align search bar and buttons*/
-  /*display: table;*/
-  position: relative;
+  /*To center and vertical align search bar and buttons*/
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 .SearchBar {
   /*To vertical align search bar and buttons*/
   /*display: table-cell;*/
   /*vertical-align: middle;*/
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 10%;
-  width: 50%;
-  margin: -15% 0 0 -25%;
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*left: 50%;*/
+  /*height: 10%;*/
+  /*width: 50%;*/
+  /*margin: -15% 0 0 -15%;*/
 }
 
 .LinksBar {
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  height: 10%;
-  width: 50%;
-  margin: -15% 0 0 -25%;
+  /*position: absolute;*/
+  /*top: 65%;*/
+  /*left: 50%;*/
+  /*height: 10%;*/
+  /*width: 50%;*/
+  /*margin: -15% 0 0 -15%;*/
   display: flex;
+  justify-content: space-between;
 }
 
 .LinksButtonWrapper {

@@ -62,12 +62,12 @@ class LinksBar extends Component {
   render() {
     return (
       <div className="LinksBar">
-        <LinksButton image={facebook} url="http://www.facebook.com"/>
         <LinksButton image={gmail} url="http://www.gmail.com"/>
-        <LinksButton image={pinterest} url="http://www.pinterest.com"/>
-        <LinksButton image={youtube} url="http://www.youtube.com"/>
         <LinksButton image={amazon} url="http://www.amazon.com"/>
+        <LinksButton image={facebook} url="http://www.facebook.com"/>
+        <LinksButton image={youtube} url="http://www.youtube.com"/>
         <LinksButton image={twitter} url="http://www.twitter.com"/>
+        <LinksButton image={pinterest} url="http://www.pinterest.com"/>
       </div>
     );
   }

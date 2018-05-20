@@ -60,7 +60,6 @@ class MenuAppBar extends React.Component {
             {/*</IconButton>*/}
             <MenuTabs className={classes.menuButton} />
             <Typography variant="title" color="inherit" className={classes.flex}>
-              Title
             </Typography>
             {(
               <div>
