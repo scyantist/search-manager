@@ -11,6 +11,7 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 import Menu from '@material-ui/core/Menu';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -111,7 +112,16 @@ class MenuAppBar extends React.Component {
                   </MenuItem>
                   <MenuItem onClick={this.handleClose}>Background Color</MenuItem>
                   <MenuItem onClick={this.handleClose}>Background Image</MenuItem>
-                  <MenuItem onClick={this.handleClose}>Search Engine</MenuItem>
+                  <MenuItem >
+                    <TextField
+                      select
+                      value="Engine"
+                      margin="normal"
+                    >
+                      <MenuItem value="left">left</MenuItem>
+                      <MenuItem value="right">right</MenuItem>
+                    </TextField>
+                  </MenuItem>
                   {/*<FormGroup>*/}
                     {/*<Switch />*/}
                   {/*</FormGroup>*/}

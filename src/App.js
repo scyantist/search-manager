@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Input from '@material-ui/core/Input';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
-
+import CssBaseline from '@material-ui/core/CssBaseline';
 import MenuAppBar from './MenuAppBar';
 
 import gmail from './static/gmail.png'
@@ -19,6 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <CssBaseline />
         <MenuAppBar />
         <div className="ContentBlock">
           <SearchBar />
