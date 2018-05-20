@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
@@ -34,19 +33,28 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {'searchValue': ''}
   }
 
   handleSubmit(event) {
-    alert('Submit handled');
-    event.preventDefault();
+    window.open(this.constructUrl(this.state.searchValue), '_blank');
+  }
+
+  constructUrl(value) {
+    return "https://www.google.com/search?q=" + value;
+  }
+
+  handleChange(event) {
+    this.setState({'searchValue': event.target.value})
   }
 
   render() {
     return (
       <div className="SearchBar">
         <form onSubmit={this.handleSubmit}>
-          <Input placeholder="Search the web" />
-          <IconButton color="primary">
+          <Input placeholder="Search the web" onChange={this.handleChange} value={this.state.searchValue}/>
+          <IconButton color="primary" onClick={this.handleSubmit}>
             <SearchIcon />
           </IconButton>
         </form>
