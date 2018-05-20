@@ -5,11 +5,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import MoreVert from '@material-ui/icons/MoreVert';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Menu from '@material-ui/core/Menu';
@@ -117,9 +115,12 @@ class MenuAppBar extends React.Component {
                       select
                       value="Engine"
                       margin="normal"
+                      onChange={this.props.handleSearchEngine}
                     >
-                      <MenuItem value="left">left</MenuItem>
-                      <MenuItem value="right">right</MenuItem>
+                      <MenuItem value="Google" onChange={this.props.handleSearchEngine}>Google</MenuItem>
+                      <MenuItem value="Yahoo" onChange={this.props.handleSearchEngine}>Yahoo</MenuItem>
+                      <MenuItem value="Bing" onChange={this.props.handleSearchEngine}>Bing</MenuItem>
+                      <MenuItem value="DuckDuckGo" onChange={this.props.handleSearchEngine}>DuckDuckGo</MenuItem>
                     </TextField>
                   </MenuItem>
                   {/*<FormGroup>*/}
@@ -145,7 +146,6 @@ class MenuTabs extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
     const { value } = this.state;
 
     return (

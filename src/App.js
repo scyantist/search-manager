@@ -16,13 +16,23 @@ import youtube from './static/youtube.png'
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSearchEngine = this.handleSearchEngine.bind(this);
+    this.state = {'searchEngine': 'Google'};
+  }
+
+  handleSearchEngine(event) {
+    this.setState({'searchEngine': event.target.value});
+  }
+
   render() {
     return (
       <div className="App">
         <CssBaseline />
-        <MenuAppBar />
+        <MenuAppBar handleSearchEngine={this.handleSearchEngine}/>
         <div className="ContentBlock">
-          <SearchBar />
+          <SearchBar searchEngine={this.state.searchEngine} />
           <LinksBar />
         </div>
       </div>
@@ -47,7 +57,15 @@ class SearchBar extends Component {
   }
 
   constructUrl(value) {
-    return "https://www.google.com/search?q=" + value;
+    if (this.props.searchEngine === 'Google') {
+      return "https://www.google.com/search?q=" + value;
+    } else if (this.props.searchEngine === 'Yahoo') {
+      return "https://search.yahoo.com/search?p=" + value;
+    } else if (this.props.searchEngine === 'Bing') {
+      return "https://www.bing.com/search?q=" + value;
+    } else if (this.props.searchEngine === 'DuckDuckGo') {
+      return "https://duckduckgo.com/?q=" + value;
+    }
   }
 
   handleChange(event) {
@@ -69,9 +87,6 @@ class SearchBar extends Component {
 }
 
 class LinksBar extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="LinksBar">
@@ -87,15 +102,11 @@ class LinksBar extends Component {
 }
 
 class LinksButton extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="LinksButtonWrapper">
         <a target="_blank" href={this.props.url}>
-          <img src={this.props.image} className="LinksButton"/>
+          <img src={this.props.image} alt="Could not find" className="LinksButton"/>
         </a>
       </div>
     );
