@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
+
 import MenuAppBar from './MenuAppBar';
+
+import gmail from './static/gmail.png'
+import pinterest from './static/pinterest.png'
+import twitter from './static/twitter.png'
+import facebook from './static/facebook.png'
+import amazon from './static/amazon.png'
+import youtube from './static/youtube.png'
+
 import './App.css';
 
 class App extends Component {
@@ -52,17 +62,12 @@ class LinksBar extends Component {
   render() {
     return (
       <div className="LinksBar">
-        <div><img></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <LinksButton name="Facebook" url="www.facebook.com"/>
-        <LinksButton name="Amazon" url="www.amazon.com"/>
-        <LinksButton name="Apple" url="www.apple.com"/>
-        <LinksButton name="Netflix" url="www.netflix.com"/>
-        <LinksButton name="Google" url="www.google.com"/>
+        <LinksButton image={facebook} url="http://www.facebook.com"/>
+        <LinksButton image={gmail} url="http://www.gmail.com"/>
+        <LinksButton image={pinterest} url="http://www.pinterest.com"/>
+        <LinksButton image={youtube} url="http://www.youtube.com"/>
+        <LinksButton image={amazon} url="http://www.amazon.com"/>
+        <LinksButton image={twitter} url="http://www.twitter.com"/>
       </div>
     );
   }
@@ -75,9 +80,11 @@ class LinksButton extends Component {
 
   render() {
     return (
-      <Button variant="raised" color="primary" href={this.props.url}>
-        {this.props.name}
-      </Button>
+      <div className="LinksButtonWrapper">
+        <a target="_blank" href={this.props.url}>
+          <img src={this.props.image} className="LinksButton"/>
+        </a>
+      </div>
     );
   }
 }

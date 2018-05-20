@@ -32,5 +32,16 @@
   height: 10%;
   width: 50%;
   margin: -15% 0 0 -25%;
+  display: flex;
+}
+
+.LinksButtonWrapper {
+    margin: 15px;
+    cursor: pointer;
+}
+
+.LinksButton {
+  height: 44px;
+  width: 44px;
 }
 
