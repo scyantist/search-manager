@@ -1,7 +1,7 @@
 /*global chrome*/
 import React, { Component } from 'react';
 
-import { getSearchEngine, storeSearchEngine, getSearchType } from "./chromeAccessor";
+import { getSearchEngine, storeSearchEngine, getSearchType, storeSearchType } from "./chromeAccessor";
 
 import Input from '@material-ui/core/Input';
 import SearchIcon from '@material-ui/icons/Search';
@@ -21,7 +21,8 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleSearchEngine = this.handleSearchEngine.bind(this);
+    this.handleSearchEngineChange = this.handleSearchEngineChange.bind(this);
+    this.handleSearchTypeChange = this.handleSearchTypeChange.bind(this);
     getSearchEngine(function(result) {
       console.log(result);
       this.state = {'searchEngine': result};
@@ -41,12 +42,12 @@ class App extends Component {
     })
   }
 
-  handleSearchEngine(event) {
+  handleSearchEngineChange(event) {
     this.setState({'searchEngine': event.target.value});
     storeSearchEngine(event.target.value);
   }
 
-  handleSearchType(event) {
+  handleSearchTypeChange(event) {
     this.setState({'searchType': event.target.value});
     storeSearchType(event.target.value);
   }
@@ -55,9 +56,10 @@ class App extends Component {
     return (
       <div className="App">
         <CssBaseline />
-        <MenuAppBar handleSearchEngine={this.handleSearchEngine}/>
+        <MenuAppBar handleSearchEngineChange={this.handleSearchEngineChange}
+                    handleSearchTypeChange={this.handleSearchTypeChange}/>
         <div className="ContentBlock">
-          <SearchBar searchEngine={this.state.searchEngine} />
+          <SearchBar searchEngine={this.state.searchEngine} searchType={this.state.searchType} />
           <LinksBar />
         </div>
       </div>
@@ -82,6 +84,9 @@ class SearchBar extends Component {
   }
 
   constructUrl(value) {
+    const searchEngine = this.props.searchEngine;
+    const searchType = this.props.searchType;
+    //TODO: figure out image/video searching
     if (this.props.searchEngine === 'Google') {
       return "https://www.google.com/search?q=" + value;
     } else if (this.props.searchEngine === 'Yahoo') {
