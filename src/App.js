@@ -1,5 +1,7 @@
+/*global chrome*/
 import React, { Component } from 'react';
 
+import { getSearchEngine, storeSearchEngine, getSearchType } from "./chromeAccessor";
 
 import Input from '@material-ui/core/Input';
 import SearchIcon from '@material-ui/icons/Search';
@@ -20,11 +22,33 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleSearchEngine = this.handleSearchEngine.bind(this);
-    this.state = {'searchEngine': 'Google'};
+    getSearchEngine(function(result) {
+      console.log(result);
+      this.state = {'searchEngine': result};
+    });
+    getSearchType(function(result) {
+      console.log(result);
+      this.state = {'searchType': result};
+    });
+  }
+
+  // To handle syncing between different instances
+  componentDidMount() {
+    chrome.storage.onChanged.addListener(function(changes, namespace) {
+      for (key in changes) {
+        this.setState({key: changes[key].newValue});
+      }
+    })
   }
 
   handleSearchEngine(event) {
     this.setState({'searchEngine': event.target.value});
+    storeSearchEngine(event.target.value);
+  }
+
+  handleSearchType(event) {
+    this.setState({'searchType': event.target.value});
+    storeSearchType(event.target.value);
   }
 
   render() {

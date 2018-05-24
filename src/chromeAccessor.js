@@ -1,12 +1,12 @@
 /*global chrome*/
 export function storeSearchEngine(value) {
-  chrome.storage.sync.set({'engine': value}, function() {
+  chrome.storage.sync.set({'searchEngine': value}, function() {
     console.log(`Set search engine to ${value}`);
   })
 }
 
 export function getSearchEngine(callback) {
-  chrome.storage.sync.get(['engine'], callback);
+  chrome.storage.sync.get(['searchEngine'], callback);
 }
 
 export function storeSearchType(value) {
