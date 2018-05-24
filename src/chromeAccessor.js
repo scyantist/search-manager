@@ -9,6 +9,16 @@ export function getSearchEngine(callback) {
   chrome.storage.sync.get(['engine'], callback);
 }
 
+export function storeSearchType(value) {
+  chrome.storage.sync.set({'searchType': value}, function() {
+    console.log(`Set search type to ${value}`);
+  })
+}
+
+export function getSearchType(callback) {
+  chrome.storage.sync.get(['searchType'], callback);
+}
+
 export function storeShowWeather(value) {
   chrome.storage.sync.set({'weather': value}, function() {
     console.log(`Set weather to ${value}`);
