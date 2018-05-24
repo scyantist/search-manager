@@ -57,7 +57,9 @@ class MenuAppBar extends React.Component {
             {/*<IconButton className={classes.menuButton} color="inherit" aria-label="Menu">*/}
               {/*<MenuIcon />*/}
             {/*</IconButton>*/}
-            <MenuTabs className={classes.menuButton} handleSearchTypeChange={this.props.handleSearchTypeChange} />
+            <MenuTabs className={classes.menuButton}
+                      handleSearchTypeChange={this.props.handleSearchTypeChange}
+                      searchType={this.props.searchType}/>
             <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>
             {(
@@ -137,20 +139,13 @@ class MenuAppBar extends React.Component {
 }
 
 class MenuTabs extends React.Component {
-  state = {
-    value: 0,
-  };
-
   handleChange = (event, value) => {
-    this.setState({ value });
     this.props.handleSearchTypeChange(event);
   };
 
   render() {
-    const { value } = this.state;
-
     return (
-      <Tabs value={value} onChange={this.handleChange}>
+      <Tabs value={this.props.searchType} onChange={this.handleChange}>
         <Tab label="Web" />
         <Tab label="Images" />
         <Tab label="Videos" href="#basic-tabs" />
