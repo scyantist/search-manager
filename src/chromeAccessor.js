@@ -10,8 +10,8 @@ export function getSearchEngine(callback) {
 }
 
 export function storeSearchType(value) {
+  console.log(`Set search type to ${value}`);
   chrome.storage.sync.set({'searchType': value}, function() {
-    console.log(`Set search type to ${value}`);
   })
 }
 

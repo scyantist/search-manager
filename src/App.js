@@ -34,7 +34,7 @@ class App extends Component {
     getSearchType(function(result) {
       var searchType = result.searchType;
       if (searchType == null) {
-        searchType = 0
+        searchType = 'Web'
       }
       this.state['searchType'] =  searchType;
     }.bind(this));
@@ -44,9 +44,11 @@ class App extends Component {
   componentDidMount() {
     chrome.storage.onChanged.addListener(function(changes, namespace) {
       for (let key in changes) {
-        this.setState({key: changes[key].newValue});
+        if (this.state[key] !== changes[key].newValue) {
+          this.setState({key: changes[key].newValue});
+        }
       }
-    })
+    }.bind(this));
   }
 
   handleSearchEngineChange(event) {
@@ -54,9 +56,9 @@ class App extends Component {
     storeSearchEngine(event.target.value);
   }
 
-  handleSearchTypeChange(event) {
-    this.setState({'searchType': event.target.value});
-    storeSearchType(event.target.value);
+  handleSearchTypeChange(searchType) {
+    this.setState({'searchType': searchType});
+    storeSearchType(searchType);
   }
 
   render() {

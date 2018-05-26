@@ -140,12 +140,28 @@ class MenuAppBar extends React.Component {
 
 class MenuTabs extends React.Component {
   handleChange = (event, value) => {
-    this.props.handleSearchTypeChange(event);
+    if (value == 0) {
+      this.props.handleSearchTypeChange("Web");
+    } else if (value == 1) {
+      this.props.handleSearchTypeChange("Images");
+    } else if (value == 2) {
+      this.props.handleSearchTypeChange("Videos");
+    }
   };
+
+  static searchTypeStrToInt(searchTypeStr) {
+    if (searchTypeStr === 'Web') {
+      return 0;
+    } else if (searchTypeStr === 'Images') {
+      return 1;
+    } else if (searchTypeStr === 'Videos') {
+      return 2;
+    }
+  }
 
   render() {
     return (
-      <Tabs value={this.props.searchType} onChange={this.handleChange}>
+      <Tabs value={this.searchTypeStrToInt(this.props.searchType)} onChange={this.handleChange}>
         <Tab label="Web" />
         <Tab label="Images" />
         <Tab label="Videos" href="#basic-tabs" />
@@ -157,4 +173,5 @@ class MenuTabs extends React.Component {
 MenuAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
 export default withStyles(styles)(MenuAppBar);
