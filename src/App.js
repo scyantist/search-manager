@@ -23,20 +23,27 @@ class App extends Component {
     super(props);
     this.handleSearchEngineChange = this.handleSearchEngineChange.bind(this);
     this.handleSearchTypeChange = this.handleSearchTypeChange.bind(this);
+    this.state = {};
     getSearchEngine(function(result) {
-      console.log(result);
-      this.state = {'searchEngine': result};
-    });
+      var searchEngine = result.searchEngine;
+      if (searchEngine == null) {
+        searchEngine = 'Google'
+      }
+      this.state['searchEngine'] =  searchEngine;
+    }.bind(this));
     getSearchType(function(result) {
-      console.log(result);
-      this.state = {'searchType': result};
-    });
+      var searchType = result.searchType;
+      if (searchType == null) {
+        searchType = 0
+      }
+      this.state['searchType'] =  searchType;
+    }.bind(this));
   }
 
   // To handle syncing between different instances
   componentDidMount() {
     chrome.storage.onChanged.addListener(function(changes, namespace) {
-      for (key in changes) {
+      for (let key in changes) {
         this.setState({key: changes[key].newValue});
       }
     })
