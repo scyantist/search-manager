@@ -103,15 +103,43 @@ class SearchBar extends Component {
   constructUrl(value) {
     const searchEngine = this.props.searchEngine;
     const searchType = this.props.searchType;
-    //TODO: figure out image/video searching
-    if (this.props.searchEngine === 'Google') {
-      return "https://www.google.com/search?q=" + value;
+    var searchUrl;
+    if (searchEngine === 'Google') {
+      searchUrl = "https://www.google.com/search?";
+      if (searchType === 'Web') {
+        return searchUrl + "q=" + value;
+      } else if (searchType === 'Images') {
+        return searchUrl + "tbm=isch&q=" + value;
+      } else if (searchType === 'Videos') {
+        return searchUrl + "tbm=vid&q=" + value;
+      }
     } else if (this.props.searchEngine === 'Yahoo') {
-      return "https://search.yahoo.com/search?p=" + value;
+      if (searchType === 'Web') {
+        return "https://search.yahoo.com/search?p=" + value;
+      } else if (searchType === 'Images') {
+        return "https://images.search.yahoo.com/search/images?p=" + value;
+      } else if (searchType === 'Videos') {
+        return "https://video.search.yahoo.com/search/video?p=" + value;
+      }
     } else if (this.props.searchEngine === 'Bing') {
-      return "https://www.bing.com/search?q=" + value;
+      searchUrl = "https://www.bing.com/";
+      if (searchType === 'Web') {
+        return searchUrl + "search?q=" + value;
+      } else if (searchType === 'Images') {
+        return searchUrl + "images/search?q=" + value;
+      } else if (searchType === 'Videos') {
+        return searchUrl + "videos/search?q=" + value;
+      }
     } else if (this.props.searchEngine === 'DuckDuckGo') {
-      return "https://duckduckgo.com/?q=" + value;
+      searchUrl =  "https://duckduckgo.com/?q=" + value;
+      if (searchType === 'Web') {
+        return searchUrl + "&ia=web";
+      } else if (searchType === 'Images') {
+        return searchUrl + "&iax=images&ia=images";
+      } else if (searchType === 'Videos') {
+        return searchUrl + "&iax=videos&ia=videos";
+      }
+
     }
   }
 

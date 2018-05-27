@@ -190,6 +190,7 @@ class MenuAppBar extends React.Component {
                       <MenuItem value="Bing">Bing</MenuItem>
                       <MenuItem value="DuckDuckGo">DuckDuckGo</MenuItem>
                     </TextField>
+                    Engine
                   </MenuItem>
                   {/*<FormGroup>*/}
                     {/*<Switch />*/}
