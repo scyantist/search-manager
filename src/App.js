@@ -21,8 +21,8 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleSearchEngineChange = this.handleSearchEngineChange.bind(this);
-    this.handleSearchTypeChange = this.handleSearchTypeChange.bind(this);
+    this.handleChangeSearchEngine = this.handleChangeSearchEngine.bind(this);
+    this.handleChangeSearchType = this.handleChangeSearchType.bind(this);
     this.state = {};
     getSearchEngine(function(result) {
       var searchEngine = result.searchEngine;
@@ -51,14 +51,14 @@ class App extends Component {
     }.bind(this));
   }
 
-  handleSearchEngineChange(event) {
+  handleChangeSearchEngine(event) {
     console.log('New search engine');
     console.log(event);
     this.setState({'searchEngine': event.target.value});
     storeSearchEngine(event.target.value);
   }
 
-  handleSearchTypeChange(searchType) {
+  handleChangeSearchType(searchType) {
     this.setState({'searchType': searchType});
     storeSearchType(searchType);
   }
@@ -67,8 +67,8 @@ class App extends Component {
     return (
       <div className="App">
         <CssBaseline />
-        <MenuAppBar handleSearchEngineChange={this.handleSearchEngineChange}
-                    handleSearchTypeChange={this.handleSearchTypeChange}
+        <MenuAppBar handleChangeSearchEngine={this.handleChangeSearchEngine}
+                    handleChangeSearchType={this.handleChangeSearchType}
                     searchType={this.state.searchType}/>
         <div className="ContentBlock">
           <SearchBar searchEngine={this.state.searchEngine} searchType={this.state.searchType} />

@@ -14,7 +14,14 @@ import Menu from '@material-ui/core/Menu';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-import { getShowClock, getShowWeather, getNTEnabled } from "./chromeAccessor";
+import {
+  getShowClock,
+  storeShowClock,
+  getShowWeather,
+  storeShowWeather,
+  getNTEnabled,
+  storeNTEnabled
+} from "./chromeAccessor";
 
 const styles = {
   root: {
@@ -66,20 +73,26 @@ class MenuAppBar extends React.Component {
     this.setState({ anchorEl: null });
   };
 
-  handleChangeShowWeather = event => {
+  handleChangeShowWeather = (event, checked) => {
     console.log('Changed show weather');
-    console.log(event);
-  }
+    console.log(checked);
+    this.setState({'showWeather': checked});
+    storeShowWeather(checked);
+  };
 
-  handleChangeShowClock = event => {
+  handleChangeShowClock = (event, checked) => {
     console.log('Changed show clock');
-    console.log(event);
-  }
+    console.log(checked);
+    this.setState({'showClock': checked});
+    storeShowClock(checked);
+  };
 
-  handleChangeNTEnabled = event => {
+  handleChangeNTEnabled = (event, checked) => {
     console.log('Changed NTEnabled');
-    console.log(event);
-  }
+    console.log(checked);
+    this.setState({'nTEnabled': checked});
+    storeNTEnabled(checked);
+  };
 
   render() {
     const { classes } = this.props;
@@ -94,7 +107,7 @@ class MenuAppBar extends React.Component {
               {/*<MenuIcon />*/}
             {/*</IconButton>*/}
             <MenuTabs className={classes.menuButton}
-                      handleSearchTypeChange={this.props.handleSearchTypeChange}
+                      handleChangeSearchType={this.props.handleChangeSearchType}
                       searchType={this.props.searchType}/>
             <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>
@@ -153,12 +166,12 @@ class MenuAppBar extends React.Component {
                       select
                       value="Engine"
                       margin="normal"
-                      onChange={this.props.handleSearchEngine}
+                      onChange={this.props.handleChangeSearchEngine}
                     >
-                      <MenuItem value="Google" onChange={this.props.handleSearchEngine}>Google</MenuItem>
-                      <MenuItem value="Yahoo" onChange={this.props.handleSearchEngine}>Yahoo</MenuItem>
-                      <MenuItem value="Bing" onChange={this.props.handleSearchEngine}>Bing</MenuItem>
-                      <MenuItem value="DuckDuckGo" onChange={this.props.handleSearchEngine}>DuckDuckGo</MenuItem>
+                      <MenuItem value="Google">Google</MenuItem>
+                      <MenuItem value="Yahoo">Yahoo</MenuItem>
+                      <MenuItem value="Bing">Bing</MenuItem>
+                      <MenuItem value="DuckDuckGo">DuckDuckGo</MenuItem>
                     </TextField>
                   </MenuItem>
                   {/*<FormGroup>*/}
@@ -177,11 +190,11 @@ class MenuAppBar extends React.Component {
 class MenuTabs extends React.Component {
   handleChange = (event, value) => {
     if (value == 0) {
-      this.props.handleSearchTypeChange("Web");
+      this.props.handleChangeSearchType("Web");
     } else if (value == 1) {
-      this.props.handleSearchTypeChange("Images");
+      this.props.handleChangeSearchType("Images");
     } else if (value == 2) {
-      this.props.handleSearchTypeChange("Videos");
+      this.props.handleChangeSearchType("Videos");
     }
   };
 
