@@ -28,14 +28,12 @@ const styles = {
 };
 
 class MenuAppBar extends React.Component {
-  state = {
-    // auth: true,
-    anchorEl: null
-  };
-
-  // handleChange = (event, checked) => {
-  //   this.setState({ auth: checked });
-  // };
+  constructor(props) {
+    super(props);
+    this.state = {
+      anchorEl: null
+    };
+  }
 
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });

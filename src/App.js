@@ -29,14 +29,14 @@ class App extends Component {
       if (searchEngine == null) {
         searchEngine = 'Google'
       }
-      this.state['searchEngine'] =  searchEngine;
+      this.setState({'searchEngine': searchEngine});
     }.bind(this));
     getSearchType(function(result) {
       var searchType = result.searchType;
       if (searchType == null) {
         searchType = 'Web'
       }
-      this.state['searchType'] =  searchType;
+      this.setState({'searchType': searchType});
     }.bind(this));
   }
 
