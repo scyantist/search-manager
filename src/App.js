@@ -45,7 +45,7 @@ class App extends Component {
     chrome.storage.onChanged.addListener(function(changes, namespace) {
       for (let key in changes) {
         if (this.state[key] !== changes[key].newValue) {
-          this.setState({key: changes[key].newValue});
+          this.setState({ [key]: changes[key].newValue});
         }
       }
     }.bind(this));

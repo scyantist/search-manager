@@ -149,7 +149,7 @@ class MenuTabs extends React.Component {
     }
   };
 
-  static searchTypeStrToInt(searchTypeStr) {
+  searchTypeStrToInt(searchTypeStr) {
     if (searchTypeStr === 'Web') {
       return 0;
     } else if (searchTypeStr === 'Images') {
