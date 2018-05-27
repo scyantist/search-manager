@@ -1,3 +1,4 @@
+/*global chrome*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -62,6 +63,22 @@ class MenuAppBar extends React.Component {
         nTEnabled = false;
       }
       this.setState({'nTEnabled': nTEnabled});
+    }.bind(this));
+  }
+
+  // To handle syncing between different instances
+  componentDidMount() {
+    chrome.storage.onChanged.addListener(function(changes, namespace) {
+      console.log("Changes to chrome storage from menu bar, syncing");
+      console.log(changes);
+      for (let key in changes) {
+        //TODO: figure out a way to do this better
+        if (key === 'showWeather' || key === 'showClock' || key === 'nTEnabled') {
+          if (this.state[key] !== changes[key].newValue) {
+            this.setState({[key]: changes[key].newValue});
+          }
+        }
+      }
     }.bind(this));
   }
 

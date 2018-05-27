@@ -43,9 +43,14 @@ class App extends Component {
   // To handle syncing between different instances
   componentDidMount() {
     chrome.storage.onChanged.addListener(function(changes, namespace) {
+      console.log("Changes to chrome storage from top level app, syncing");
+      console.log(changes);
       for (let key in changes) {
-        if (this.state[key] !== changes[key].newValue) {
-          this.setState({ [key]: changes[key].newValue});
+        //TODO: figure out a way to do this better
+        if (key === 'searchEngine' || key === 'searchType') {
+          if (this.state[key] !== changes[key].newValue) {
+            this.setState({[key]: changes[key].newValue});
+          }
         }
       }
     }.bind(this));
