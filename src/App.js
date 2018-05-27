@@ -74,7 +74,8 @@ class App extends Component {
         <CssBaseline />
         <MenuAppBar handleChangeSearchEngine={this.handleChangeSearchEngine}
                     handleChangeSearchType={this.handleChangeSearchType}
-                    searchType={this.state.searchType}/>
+                    searchType={this.state.searchType}
+                    searchEngine={this.state.searchEngine}/>
         <div className="ContentBlock">
           <SearchBar searchEngine={this.state.searchEngine} searchType={this.state.searchType} />
           <LinksBar />

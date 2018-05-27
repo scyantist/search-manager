@@ -181,7 +181,6 @@ class MenuAppBar extends React.Component {
                   <MenuItem >
                     <TextField
                       select
-                      value="Engine"
                       margin="normal"
                       onChange={this.props.handleChangeSearchEngine}
                     >
@@ -190,7 +189,7 @@ class MenuAppBar extends React.Component {
                       <MenuItem value="Bing">Bing</MenuItem>
                       <MenuItem value="DuckDuckGo">DuckDuckGo</MenuItem>
                     </TextField>
-                    Engine
+                    {this.props.searchEngine}
                   </MenuItem>
                   {/*<FormGroup>*/}
                     {/*<Switch />*/}
