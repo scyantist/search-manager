@@ -123,7 +123,7 @@ class MenuAppBar extends React.Component {
             {/*<IconButton className={classes.menuButton} color="inherit" aria-label="Menu">*/}
               {/*<MenuIcon />*/}
             {/*</IconButton>*/}
-            <MenuTabs className={classes.menuButton}
+            <MenuTabs
                       handleChangeSearchType={this.props.handleChangeSearchType}
                       searchType={this.props.searchType}/>
             <Typography variant="title" color="inherit" className={classes.flex}>

@@ -152,7 +152,7 @@ class SearchBar extends Component {
     return (
       <div className="SearchBar">
         <form onSubmit={this.handleSubmit}>
-          <Input placeholder="Search the web" onChange={this.handleChange} value={this.state.searchValue}/>
+          <Input fullWidth={true} placeholder="Search the web" onChange={this.handleChange} value={this.state.searchValue}/>
           <IconButton color="primary" onClick={this.handleSubmit}>
             <SearchIcon />
           </IconButton>
