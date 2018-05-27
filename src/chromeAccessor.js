@@ -20,33 +20,33 @@ export function getSearchType(callback) {
 }
 
 export function storeShowWeather(value) {
-  chrome.storage.sync.set({'weather': value}, function() {
+  chrome.storage.sync.set({'showWeather': value}, function() {
     console.log(`Set weather to ${value}`);
   })
 }
 
 export function getShowWeather(callback) {
-  chrome.storage.sync.get(['weather'], callback);
+  chrome.storage.sync.get(['showWeather'], callback);
 }
 
 export function storeShowClock(value) {
-  chrome.storage.sync.set({'clock': value}, function() {
+  chrome.storage.sync.set({'showClock': value}, function() {
     console.log(`Set clock to ${value}`);
   })
 }
 
 export function getShowClock(callback) {
-  chrome.storage.sync.get(['clock'], callback);
+  chrome.storage.sync.get(['showClock'], callback);
 }
 
 export function storeNTEnabled(value) {
-  chrome.storage.sync.set({'ntEnabled': value}, function() {
+  chrome.storage.sync.set({'nTEnabled': value}, function() {
     console.log(`Set nt enabled to ${value}`);
   })
 }
 
 export function getNTEnabled(callback) {
-  chrome.storage.sync.get(['ntEnabled'], callback);
+  chrome.storage.sync.get(['nTEnabled'], callback);
 }
 
 export function storeBackgroundColor(value) {
