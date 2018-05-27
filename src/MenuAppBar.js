@@ -14,6 +14,8 @@ import Menu from '@material-ui/core/Menu';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
+import { getShowClock, getShowWeather, getNTEnabled } from "./chromeAccessor";
+
 const styles = {
   root: {
     flexGrow: 1,
@@ -33,6 +35,27 @@ class MenuAppBar extends React.Component {
     this.state = {
       anchorEl: null
     };
+    getShowWeather(function(result) {
+      let showWeather = result.showWeather;
+      if (showWeather == null) {
+        showWeather = true;
+      }
+      this.setState({'showWeather': showWeather});
+    }.bind(this));
+    getShowClock(function(result) {
+      let showClock = result.showClock;
+      if (showClock == null) {
+        showClock = true;
+      }
+      this.setState({'showClock': showClock});
+    }.bind(this));
+    getNTEnabled(function(result) {
+      let nTEnabled = result.nTEnabled;
+      if (nTEnabled == null) {
+        nTEnabled = false;
+      }
+      this.setState({'nTEnabled': nTEnabled});
+    }.bind(this));
   }
 
   handleMenu = event => {
@@ -42,6 +65,21 @@ class MenuAppBar extends React.Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+
+  handleChangeShowWeather = event => {
+    console.log('Changed show weather');
+    console.log(event);
+  }
+
+  handleChangeShowClock = event => {
+    console.log('Changed show clock');
+    console.log(event);
+  }
+
+  handleChangeNTEnabled = event => {
+    console.log('Changed NTEnabled');
+    console.log(event);
+  }
 
   render() {
     const { classes } = this.props;
@@ -87,7 +125,7 @@ class MenuAppBar extends React.Component {
                   <MenuItem >
                     <FormControlLabel
                       control={
-                        <Switch />
+                        <Switch checked={this.state.showWeather} onChange={this.handleChangeShowWeather}/>
                       }
                       label={'Show Weather'}
                     />
@@ -95,7 +133,7 @@ class MenuAppBar extends React.Component {
                   <MenuItem >
                     <FormControlLabel
                       control={
-                        <Switch />
+                        <Switch checked={this.state.showClock} onChange={this.handleChangeShowClock}/>
                       }
                       label={'Show Clock'}
                     />
@@ -103,7 +141,7 @@ class MenuAppBar extends React.Component {
                   <MenuItem >
                     <FormControlLabel
                       control={
-                        <Switch />
+                        <Switch checked={this.state.nTEnabled} onChange={this.handleChangeNTEnabled}/>
                       }
                       label={'NT Enabled'}
                     />

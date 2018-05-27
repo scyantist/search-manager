@@ -52,6 +52,8 @@ class App extends Component {
   }
 
   handleSearchEngineChange(event) {
+    console.log('New search engine');
+    console.log(event);
     this.setState({'searchEngine': event.target.value});
     storeSearchEngine(event.target.value);
   }

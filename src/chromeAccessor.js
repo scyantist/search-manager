@@ -35,7 +35,7 @@ export function storeShowClock(value) {
   })
 }
 
-export function getClock(callback) {
+export function getShowClock(callback) {
   chrome.storage.sync.get(['clock'], callback);
 }
 
