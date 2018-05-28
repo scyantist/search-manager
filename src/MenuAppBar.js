@@ -13,6 +13,7 @@ import TextField from '@material-ui/core/TextField';
 import Menu from '@material-ui/core/Menu';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Clock from './Clock';
 
 import {
   getShowClock,
@@ -32,6 +33,10 @@ const styles = {
   },
   flex: {
     flex: 1,
+    height: "64px",
+  },
+  heightNav: {
+    height: "64px",
   },
   menuButton: {
     marginLeft: -12,
@@ -51,10 +56,13 @@ class MenuAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar className={classes.displayFlex}>
-            <MenuTabs className={classes.flexSpaceRight}
+            <MenuTabs classes={{
+              height: classes.heightNav
+            }}
                       handleChangeSearchType={this.props.handleChangeSearchType}
                       searchType={this.props.searchType}/>
-            <div className={classes.flex}></div>
+            <div className={classes.flex} ></div>
+            <Clock />
             <SettingsDropdown handleChangeSearchEngine={this.props.handleChangeSearchEngine}
                               searchEngine={this.props.searchEngine}/>
           </Toolbar>
@@ -63,6 +71,7 @@ class MenuAppBar extends React.Component {
     );
   }
 }
+
 
 class MenuTabs extends React.Component {
   handleChange = (event, value) => {
