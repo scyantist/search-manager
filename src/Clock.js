@@ -39,7 +39,7 @@ class Clock extends Component {
       hour: ('0' + now.getHours()).slice(-2),
       minute: ('0' + now.getMinutes()).slice(-2),
       day: this.dayIntToStr(now.getDay()),
-      month: now.getMonth(),
+      month: (1 + now.getMonth()),
       date: now.getDate(),
       year: now.getFullYear()
     };
@@ -52,7 +52,7 @@ class Clock extends Component {
         hour: ('0' + now.getHours()).slice(-2),
         minute: ('0' + now.getMinutes()).slice(-2),
         day: this.dayIntToStr(now.getDay()),
-        month: now.getMonth(),
+        month: (1 + now.getMonth()),
         date: now.getDate(),
         year: now.getFullYear()
       });
