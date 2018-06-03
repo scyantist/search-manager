@@ -17,6 +17,9 @@
       "description": "Show the SearchManager"
     }
   },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
   "permissions": ["tabs","storage"],
   "version": "1.0"
 }
