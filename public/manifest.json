@@ -19,14 +19,6 @@
       "is_default": true
     }
   },
-  "commands": {
-    "open-search-manager": {
-      "suggested_key": {
-        "default": "Ctrl+T"
-      },
-      "description": "Show the SearchManager"
-    }
-  },
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
