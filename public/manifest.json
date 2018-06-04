@@ -9,6 +9,16 @@
     "scripts": ["background.js"],
     "persistent": false
   },
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "Search Manager",
+      "keyword": "smm",
+      "search_url": "https://www.bing.com/?q={searchTerms}&PC=U316&FORM=CHROMN",
+      "favicon_url": "https://search.yahoo.com/favicon.ico",
+      "encoding": "UTF-8",
+      "is_default": true
+    }
+  },
   "commands": {
     "open-search-manager": {
       "suggested_key": {
@@ -19,6 +29,9 @@
   },
   "chrome_url_overrides": {
     "newtab": "index.html"
+  },
+  "omnibox": {
+    "keyword": "sm"
   },
   "permissions": ["tabs","storage"],
   "version": "1.0"
