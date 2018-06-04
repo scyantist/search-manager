@@ -22,9 +22,6 @@
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "omnibox": {
-    "keyword": "sm"
-  },
   "permissions": ["tabs","storage"],
   "version": "1.0"
 }
